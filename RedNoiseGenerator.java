@@ -39,7 +39,7 @@ public final class RedNoiseGenerator {
 
     public static double[] generateArrivalTimes(double meanRate, double duration, double alpha) throws BinningException, TimeSeriesException {
 		
-	MersenneTwister64 engine = new MersenneTwister64(new java.util.Date());
+	MersenneTwister64 engine = new MersenneTwister64(new java.util.Date()); // initialises random number generator called engine
 	return generateArrivalTimes(meanRate, duration, alpha, engine);
     }
 
@@ -58,8 +58,8 @@ public final class RedNoiseGenerator {
     public static double[] generateArrivalTimes(double meanRate, double duration, double alpha, int nFreqsPerIFS, RandomEngine engine) throws BinningException, TimeSeriesException {
 
 	double nuMin = 1d/duration;
-	double nuMax = 2d*meanRate;
-	nuMax = meanRate;
+	double nuMax = 2d*meanRate; // 
+	nuMax = meanRate; // 
 	double df = nuMin/nFreqsPerIFS;
 	double nFreqs = (nuMax - nuMin)/df;
 
